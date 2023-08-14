@@ -1,5 +1,6 @@
 package tests;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@Slf4j
 public class SeleniumTests {
     private WebDriver driver;
     private static final String ERROR_CLASS_NAME = "error-summary";
@@ -28,6 +31,7 @@ public class SeleniumTests {
         String s = System.getProperty("user.dir");
         s = s + "/resources/chromedriver";
         System.setProperty("webdriver.chrome.driver", s);
+        log.info("Chrome driver path is set");
         driver = new ChromeDriver();
         driver.get("https://manage-case.perftest.platform.hmcts.net/");
         Thread.sleep(1000);
@@ -36,6 +40,7 @@ public class SeleniumTests {
     @AfterEach
     public void tearDown() {
         // Clean up WebDriver after each test
+        log.info("Quitting driver..");
         driver.quit();
     }
 
@@ -56,7 +61,6 @@ public class SeleniumTests {
         driver.findElement(By.name(SAVE_BUTTON)).click();
         assertTrue(driver.findElement(By.className(ERROR_CLASS_NAME)).getText().contains("Check your email address"));
         assertTrue(driver.findElement(By.className(ERROR_CLASS_NAME)).getText().contains("Check your password"));
-
     }
 
     @Test
