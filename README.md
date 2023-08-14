@@ -21,5 +21,5 @@ I would like to improve the tests by following:
 4. Increase my knowledge in selenium webdriver tests, make use of parameterised tests to increase testing scenarios.
 
 5. For Junit tests, I would like to add more logging.
-6. Also, won't write the password directly into code, would read from secrets, key-vaults of azure. 
+6. Also, won't write the password directly into code, would read from secrets, azure key-vaults. 
 
