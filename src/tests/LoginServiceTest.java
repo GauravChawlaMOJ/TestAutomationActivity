@@ -10,8 +10,8 @@ public class LoginServiceTest {
     public static final int MAX_LOGIN_ATTEMPTS = 3;
     private int loginAttempts = 0;
     private List<String> lockedAccounts;
-    public List<String> inActiveAccounts;
-    public List<String> disabledAccounts;
+    protected List<String> inActiveAccounts;
+    protected List<String> disabledAccounts;
     private static final String PASSWORD = "password";
 
     private boolean isAccountDisabled(String username) {
@@ -31,13 +31,13 @@ public class LoginServiceTest {
     public String encodePassword(String password) {
         // Logic to encode/hash the password (in this example just reversing the order of password for testing)
         char ch;
-        String encodedPassword = "";
+        StringBuilder encodedPassword = new StringBuilder();
         for (int i=password.length() - 1; i > -1 ; i--)
         {
             ch= password.charAt(i);
-            encodedPassword= encodedPassword + ch;
+            encodedPassword.append(ch);
         }
-        return encodedPassword;
+        return encodedPassword.toString();
     }
 
     private String getPassword() {

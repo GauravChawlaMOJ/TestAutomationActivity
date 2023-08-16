@@ -22,4 +22,14 @@ I would like to improve the tests by following:
 
 5. For Junit tests, I would like to add more logging.
 6. Also, won't write the password directly into code, would read from secrets, azure key-vaults. 
+7. Improve LoginServiceTest code to fix sonar issues. 
+(declare lists protected and encodedPassword as stringbuilder as string concatenation will discard the old
+string for garbage collection and create a new one. Performance wise, it is better to use string builder. Also, sonar was suggesting that!)
+8. Would create db scripts to create db and save user-names and passwords in it for login service.
+9. Would use driver.navigate().refresh() to refresh the page to get case list so that some concrete assertions can be done 
+(to confirm that login was successful). The reason for this is that, demo doesn't load case list sometimes (or load slowly) 
+and the test might fail if it won't see/find the expected element(s)
+
+
+
 

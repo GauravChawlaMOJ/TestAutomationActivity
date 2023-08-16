@@ -39,7 +39,7 @@ public class SeleniumTests {
 
     @AfterEach
     public void tearDown() {
-        // Clean up WebDriver after each test
+        // Clean up WebDriver
         log.info("Quitting driver..");
         driver.quit();
     }
@@ -50,7 +50,7 @@ public class SeleniumTests {
         driver.findElement(By.id(PASSWORD)).sendKeys(PASSWORD_VALUE);
         driver.findElement(By.name(SAVE_BUTTON)).click();
         // Assert that the user is redirected to the expected page
-        assertEquals("https://manage-case.perftest.platform.hmcts.net/", driver.getCurrentUrl());
+        assertEquals("https://manage-case.demo.platform.hmcts.net/", driver.getCurrentUrl());
         assertEquals("HMCTS Manage cases", driver.getTitle());
     }
 
